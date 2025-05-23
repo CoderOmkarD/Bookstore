@@ -11,6 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 
+// Home file
 const Home = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 5 }}>
