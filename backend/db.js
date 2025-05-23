@@ -1,6 +1,7 @@
 const mysql = require('mysql2');
 require('dotenv').config();
 
+// Create a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
