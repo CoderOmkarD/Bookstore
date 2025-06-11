@@ -1,77 +1,74 @@
-import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Paper,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+
+import React, { useState } from 'react';
+import { Container, TextField, Button, Typography, Box } from '@mui/material';
+import axios from 'axios';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/contact', formData);
+      alert('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message.');
+    }
+  };
+
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h4" gutterBottom>
-          Contact Us
-        </Typography>
-
-        <Divider sx={{ mb: 2 }} />
-
-        <Typography variant="body1" paragraph>
-          Have a question, suggestion, or need support? We'd love to hear from
-          you! Reach out to us using the information below, and we'll get back
-          to you as soon as possible.
-        </Typography>
-
-        <Box sx={{ mt: 3 }}>
-          <List>
-            <ListItem>
-              <ListItemText
-                primary="📧 Email"
-                secondary="support@bookstoreapp.com"
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemText
-                primary="📞 Phone"
-                secondary="+91 98765 43210"
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemText
-                primary="🏢 Address"
-                secondary="BookStore HQ, 3rd Floor, Phoenix Tech Park, Pune, Maharashtra - 411001"
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemText
-                primary="💬 Social Media"
-                secondary={
-                  <>
-                    Instagram: @bookstore_app <br />
-                    Twitter: @BookStoreOnline <br />
-                    Facebook: fb.com/BookStoreApp
-                  </>
-                }
-              />
-            </ListItem>
-          </List>
-        </Box>
-
-        <Typography variant="body1" sx={{ mt: 4 }}>
-          Customer support is available from <strong>Monday to Saturday</strong>, 10:00 AM – 6:00 PM.
-        </Typography>
-
-        <Typography variant="body1" sx={{ mt: 2 }}>
-          📚 Thank you for choosing <strong>BookStore</strong> — we're always here to help!
-        </Typography>
-      </Paper>
+    <Container maxWidth="sm" sx={{ mt: 5 }}>
+      <Typography variant="h2"sx={{ mb: 1 }}>
+        Contact Us
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit}>
+        <TextField
+          fullWidth
+          label="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          label="Message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          margin="normal"
+          multiline
+          rows={4}
+          required
+        />
+        <Button variant="contained" color="primary" type="submit" sx={{ mt: 2,mb:2 ,alignItems:'flex-end'}}>
+          Send Message
+        </Button>
+      </Box>
     </Container>
   );
 };

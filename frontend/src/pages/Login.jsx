@@ -154,9 +154,20 @@ const Login = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 8 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h4" align="center" gutterBottom>
+  
+    <Container maxWidth="sm" sx={{ mt: 8 ,mb: 8}} >
+      
+        
+      
+      <Paper elevation={3} sx={{ p: 4,
+        //  backgroundImage:"https://img.freepik.com/free-photo/psychedelic-paper-shapes-with-copy-space_23-2149378308.jpg?semt=ais_hybrid&w=740"
+        backgroundImage: 'url(https://cdn.pixabay.com/photo/2018/04/09/14/33/abstract-3304213_640.png)', // replace with your image URL
+        backgroundSize: 'cover',
+    
+        
+        
+        }}>
+        <Typography variant="h3" align="center" sx={{ mb: 3 }}>
           Login to Your Account
         </Typography>
 
@@ -199,6 +210,7 @@ const Login = () => {
         </Box>
       </Paper>
     </Container>
+    
   );
 };
 

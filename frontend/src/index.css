@@ -1,0 +1,7 @@
+html, body {
+  background-color: #a4b3b5de; /* Off-white, change to any color you want */
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Full height */
+  font-family: 'Roboto', sans-serif; /* Optional */
+}

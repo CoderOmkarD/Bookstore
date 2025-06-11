@@ -6,7 +6,7 @@ import XIcon from '@mui/icons-material/X';
 
 const BookstoreFooter = () => {
   return (
-    <Box sx={{ backgroundColor: '#1e1e1e', color: 'white', pt: 5, pb: 3 ,borderRadius: '15px', mb: 3,
+    <Box sx={{ backgroundColor: '#1e1e1e', color: 'white', pt: 5, pb: 3 , mb: 3,
       width: '100%',      // Increase width (px or %)
         height: '100%',     
     }}>
